@@ -9,6 +9,17 @@
 use crate::read_line;
 use crate::exit;
 
+fn read_sized_number(input: &mut String) -> i32{
+    match read_line(input).parse::<i32>() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Invalid size entered: {}.", input);
+            exit(1);
+        }
+    }
+}
+
+
 pub fn blockade(){
     let mut input = String::new();
 
@@ -25,41 +36,17 @@ pub fn blockade(){
         },
         "2" => {
             print!("Enter driven kilometers: ");
-            let kms: i32 = match read_line(&mut input).parse::<i32>() {
-                Ok(num) => {
-                    num
-                },
-                Err(_) => {
-                    println!("Invalid number entered.");
-                    exit(1);
-                },
-            };
+            let kms = read_sized_number(&mut input);
 
             let total = kms*30;
             println!("You must pay {} U.", total);
         },
         "3" => {
             print!("Enter driven kilometers: ");
-            let kms: i32 = match read_line(&mut input).parse::<i32>() {
-                Ok(num) => {
-                    num
-                },
-                Err(_) => {
-                    println!("Invalid number entered.");
-                    exit(1);
-                },
-            };
+            let kms = read_sized_number(&mut input);
 
             print!("Enter transported tons: ");
-            let tons: i32 = match read_line(&mut input).parse::<i32>() {
-                Ok(num) => {
-                    num
-                },
-                Err(_) => {
-                    println!("Invalid number entered.");
-                    exit(1);
-                },
-            };
+            let tons = read_sized_number(&mut input);
 
             let total = kms*30 + tons*70;
             println!("You must pay {} U.", total);
