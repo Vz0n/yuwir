@@ -2,7 +2,7 @@ mod util;
 mod business;
 mod geometry;
 
-use util::read_line;
+use util::{read_line, read_sized};
 use business::blockade;
 use geometry::{draw_figure, chess_game};
 use std::process::exit;

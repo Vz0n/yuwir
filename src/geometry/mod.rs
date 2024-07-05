@@ -1,24 +1,16 @@
 mod figure;
 
-use crate::read_line;
-use crate::exit;
-use figure::{rectangle,triangle, chess_table};
 
-fn read_sized_number(input: &mut String) -> u8{
-    match read_line(input).parse::<u8>() {
-        Ok(num) => num,
-        Err(_) => {
-            println!("Invalid size entered: {}. please only use numbers between 1 and 255.", input);
-            exit(1);
-        }
-    }
-}
+use crate::read_line;
+use crate::read_sized;
+use figure::{rectangle,triangle, chess_table};
 
 /*
   Write a program that can draw a rectangle triangle, square and rectangle with sizes selected by the user.
   Example of usage:
   Select figure: 1
   Enter square size: 4
+  [EXTRA]: Now added a parallelogram
 
   # # # # #
   # # # # #
@@ -34,30 +26,44 @@ pub fn draw_figure(){
     println!("Select figure to draw");
     println!("1 - Square");
     println!("2 - Rectangle");
-    println!("3 - Rectangle triangle.");
+    println!("3 - Rectangle triangle");
+    println!("4 - Parallelogram");
     print!("?: ");
 
     match read_line(&mut input){
         "1" => {
             print!("Enter size: ");
-            let size: u8 = read_sized_number(&mut input);
+            let size = read_sized::<u8>(&mut input);
 
-            rectangle(size, size);
+            print!("\n");
+            rectangle(size, size, false);
         },
         "2" => {
             print!("Enter width: ");
-            let width: u8 = read_sized_number(&mut input);
+            let width = read_sized::<u8>(&mut input);
 
             print!("Enter height: ");
-            let height: u8 = read_sized_number(&mut input);
+            let height = read_sized::<u8>(&mut input);
 
-            rectangle(width, height);
+            print!("\n");
+            rectangle(width, height, false);
         }
         "3" => {
             print!("Enter size: ");
-            let size: u8 = read_sized_number(&mut input);
+            let size = read_sized::<u8>(&mut input);
 
+            print!("\n");
             triangle(size);
+        }
+        "4" => {
+            print!("Enter width: ");
+            let width = read_sized::<u8>(&mut input);
+
+            print!("Enter height: ");
+            let height = read_sized::<u8>(&mut input);
+
+            print!("\n");
+            rectangle(width, height, true);
         }
         _ => {
             println!("Invalid choice.");
@@ -86,10 +92,10 @@ pub fn chess_game(){
     chess_table(white, black, 255, 255);
     
     print!("Enter row: ");
-    let row: u8 = read_sized_number(&mut input);
+    let row = read_sized::<u8>(&mut input);
 
     print!("Enter column: ");
-    let column: u8 = read_sized_number(&mut input);
+    let column  = read_sized::<u8>(&mut input);
 
     chess_table(white, black, row, column)
 }
