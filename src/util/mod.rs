@@ -16,7 +16,7 @@ pub fn read_sized<T: FromStr>(input: &mut String) -> T{
     match read_line(input).parse::<T>() {
         Ok(input) => input,
         Err(_) => {
-            println!("Invalid size entered: {}. please only use numbers between 1 and 255.", input);
+            println!("Invalid input: {}.", input);
             exit(1);
         }
     }
