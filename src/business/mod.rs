@@ -24,18 +24,14 @@ pub fn blockade(){
             println!("You must pay 10 U.");
         },
         "2" => {
-            print!("Enter driven kilometers: ");
-            let kms = read_sized::<u32>(&mut input);
+            let kms = read_sized::<u32>(&mut input, "Enter driven kilometers: ");
 
             let total = kms*30;
             println!("You must pay {} U.", total);
         },
         "3" => {
-            print!("Enter driven kilometers: ");
-            let kms = read_sized::<u32>(&mut input);
-
-            print!("Enter transported tons: ");
-            let tons = read_sized::<u32>(&mut input);
+            let kms = read_sized::<u32>(&mut input, "Enter driven kilometers: ");
+            let tons = read_sized::<u32>(&mut input, "Enter transported tons: ");
 
             let total = kms*30 + tons*70;
             println!("You must pay {} U.", total);

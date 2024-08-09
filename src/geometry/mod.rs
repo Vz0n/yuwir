@@ -6,11 +6,11 @@ use crate::read_sized;
 use figure::{rectangle,triangle, chess_table};
 
 /*
+  [EXTRA]: Now added a parallelogram
   Write a program that can draw a rectangle triangle, square and rectangle with sizes selected by the user.
   Example of usage:
   Select figure: 1
   Enter square size: 4
-  [EXTRA]: Now added a parallelogram
 
   # # # # #
   # # # # #
@@ -32,35 +32,27 @@ pub fn draw_figure(){
 
     match read_line(&mut input){
         "1" => {
-            print!("Enter size: ");
-            let size = read_sized::<u8>(&mut input);
+            let size = read_sized::<u8>(&mut input, "Enter size:");
 
             print!("\n");
             rectangle(size, size, false);
         },
         "2" => {
-            print!("Enter width: ");
-            let width = read_sized::<u8>(&mut input);
-
-            print!("Enter height: ");
-            let height = read_sized::<u8>(&mut input);
+            let width = read_sized::<u8>(&mut input, "Enter width: ");
+            let height = read_sized::<u8>(&mut input, "Enter height: ");
 
             print!("\n");
             rectangle(width, height, false);
         }
         "3" => {
-            print!("Enter size: ");
-            let size = read_sized::<u8>(&mut input);
+            let size = read_sized::<u8>(&mut input, "Enter size: ");
 
             print!("\n");
             triangle(size);
         }
         "4" => {
-            print!("Enter width: ");
-            let width = read_sized::<u8>(&mut input);
-
-            print!("Enter height: ");
-            let height = read_sized::<u8>(&mut input);
+            let width = read_sized::<u8>(&mut input, "Enter width: ");
+            let height = read_sized::<u8>(&mut input, "Enter height: ");
 
             print!("\n");
             rectangle(width, height, true);
@@ -91,11 +83,8 @@ pub fn chess_game(){
     // without the marker
     chess_table(white, black, 255, 255);
     
-    print!("Enter row: ");
-    let row = read_sized::<u8>(&mut input);
-
-    print!("Enter column: ");
-    let column  = read_sized::<u8>(&mut input);
+    let row = read_sized::<u8>(&mut input, "Enter row: ");
+    let column  = read_sized::<u8>(&mut input, "Enter column: ");
 
     chess_table(white, black, row, column)
 }

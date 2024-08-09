@@ -12,11 +12,13 @@ pub fn read_line(buff: &mut String) -> &str{
     buff.trim()
 }
 
-pub fn read_sized<T: FromStr>(input: &mut String) -> T{
-    match read_line(input).parse::<T>() {
-        Ok(input) => input,
+pub fn read_sized<T: FromStr>(output: &mut String, dialog: &str) -> T{
+    print!("{}", dialog);
+
+    match read_line(output).parse::<T>() {
+        Ok(output) => output,
         Err(_) => {
-            println!("Invalid input: {}.", input);
+            println!("Invalid input: {}.", output);
             exit(1);
         }
     }
