@@ -3,7 +3,7 @@ mod business;
 mod geometry;
 mod math;
 
-use util::{read_line, read_sized};
+use util::{read_line, read_sized, PROMPT};
 use business::blockade;
 use math::get_quadrant;
 use geometry::{draw_figure, chess_game};
@@ -17,7 +17,7 @@ fn main() {
     println!("2 - Figure drawer");
     println!("3 - Chess marker");
     println!("4 - Get a coordinate's quadrant.");
-    print!("?: ");
+    print!("{}", PROMPT);
 
     match read_line(&mut choice){
         "1" => {

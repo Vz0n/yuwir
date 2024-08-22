@@ -1,8 +1,7 @@
 mod figure;
 
 
-use crate::read_line;
-use crate::read_sized;
+use crate::{read_line, read_sized, PROMPT};
 use figure::{rectangle,triangle, chess_table};
 
 /*
@@ -28,7 +27,7 @@ pub fn draw_figure(){
     println!("2 - Rectangle");
     println!("3 - Rectangle triangle");
     println!("4 - Parallelogram");
-    print!("?: ");
+    print!("{}", PROMPT);
 
     match read_line(&mut input){
         "1" => {

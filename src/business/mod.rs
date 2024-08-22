@@ -6,8 +6,7 @@
   Where U is an arbitrary money unit.
  */
 
-use crate::read_line;
-use crate::read_sized;
+use crate::{read_line, read_sized, PROMPT};
 
 pub fn blockade(){
     let mut input = String::new();
@@ -17,7 +16,7 @@ pub fn blockade(){
     println!("1 - Bike");
     println!("2 - Car");
     println!("3 - Truck");
-    print!("?: ");
+    print!("{}", PROMPT);
     
     match read_line(&mut input){
         "1" => {

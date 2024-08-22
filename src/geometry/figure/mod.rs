@@ -57,9 +57,9 @@ pub fn chess_table(white: char, black: char, row: u8, column: u8){
     }
 }
 
-// This is self-explainable.
 pub fn triangle(height: u8){
-    for i in 1..height{
+    // Add one to compesate the extra line missed when drawing.
+    for i in 1..(height+1){
         for _ in 0..i{
             print!(" {} ", DRAWING_CHAR);
             sleep(SLEEP_TIME);
