@@ -6,17 +6,19 @@
   Where U is an arbitrary money unit.
  */
 
+use ansi_term::Style;
+
 use crate::{read_line, read_sized, PROMPT};
 
-pub fn blockade(){
+pub fn blockade(style: Style){
     let mut input = String::new();
 
-    println!("Select vehicle type: ");
+    println!("{}", style.paint("Select vehicle type: "));
     
     println!("1 - Bike");
     println!("2 - Car");
     println!("3 - Truck");
-    print!("{}", PROMPT);
+    print!("{}", style.paint(PROMPT));
     
     match read_line(&mut input){
         "1" => {

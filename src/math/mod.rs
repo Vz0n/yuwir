@@ -25,5 +25,5 @@ pub fn get_quadrant(){
         }
     }
 
-    println!("The coordinate is on the {} quadrant.", quadrant);
+    println!("The coordinate is on the quadrant {}.", quadrant);
 }

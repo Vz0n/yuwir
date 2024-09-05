@@ -2,6 +2,7 @@ mod figure;
 
 
 use crate::{read_line, read_sized, PROMPT};
+use ansi_term::Style;
 use figure::{rectangle,triangle, chess_table};
 
 /*
@@ -18,16 +19,16 @@ use figure::{rectangle,triangle, chess_table};
 
   ... END
 */
-pub fn draw_figure(){
+pub fn draw_figure(style: Style){
 
     let mut input = String::new();
 
-    println!("Select figure to draw");
+    println!("{}", style.paint("Select figure to draw"));
     println!("1 - Square");
     println!("2 - Rectangle");
     println!("3 - Rectangle triangle");
     println!("4 - Parallelogram");
-    print!("{}", PROMPT);
+    print!("{}", style.paint(PROMPT));
 
     match read_line(&mut input){
         "1" => {
